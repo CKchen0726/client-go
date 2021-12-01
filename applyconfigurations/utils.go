@@ -435,6 +435,12 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &applyconfigurationscoordinationv1beta1.LeaseSpecApplyConfiguration{}
 
 		// Group=core, Version=v1
+	case corev1.SchemeGroupVersion.WithKind("Action"):
+		return &applyconfigurationscorev1.ActionApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("ActionSpec"):
+		return &applyconfigurationscorev1.ActionSpecApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("ActionStatus"):
+		return &applyconfigurationscorev1.ActionStatusApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("Affinity"):
 		return &applyconfigurationscorev1.AffinityApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("AttachedVolume"):
@@ -535,6 +541,8 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &applyconfigurationscorev1.ExecActionApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("FCVolumeSource"):
 		return &applyconfigurationscorev1.FCVolumeSourceApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("Flavor"):
+		return &applyconfigurationscorev1.FlavorApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("FlexPersistentVolumeSource"):
 		return &applyconfigurationscorev1.FlexPersistentVolumeSourceApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("FlexVolumeSource"):
@@ -589,6 +597,8 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &applyconfigurationscorev1.NamespaceSpecApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("NamespaceStatus"):
 		return &applyconfigurationscorev1.NamespaceStatusApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("Network"):
+		return &applyconfigurationscorev1.NetworkApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("NFSVolumeSource"):
 		return &applyconfigurationscorev1.NFSVolumeSourceApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("Node"):
@@ -765,6 +775,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &applyconfigurationscorev1.TopologySpreadConstraintApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("TypedLocalObjectReference"):
 		return &applyconfigurationscorev1.TypedLocalObjectReferenceApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("VirtualMachine"):
+		return &applyconfigurationscorev1.VirtualMachineApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("VirtualMachineStatus"):
+		return &applyconfigurationscorev1.VirtualMachineStatusApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("Volume"):
 		return &applyconfigurationscorev1.VolumeApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("VolumeDevice"):

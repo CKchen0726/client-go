@@ -3059,6 +3059,56 @@ var schemaYAML = typed.YAMLObject(`types:
       type:
         scalar: string
       default: ""
+- name: io.k8s.api.core.v1.Action
+  map:
+    fields:
+    - name: apiVersion
+      type:
+        scalar: string
+    - name: kind
+      type:
+        scalar: string
+    - name: metadata
+      type:
+        namedType: io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta
+      default: {}
+    - name: spec
+      type:
+        namedType: io.k8s.api.core.v1.ActionSpec
+      default: {}
+    - name: status
+      type:
+        namedType: io.k8s.api.core.v1.ActionStatus
+      default: {}
+- name: io.k8s.api.core.v1.ActionSpec
+  map:
+    fields:
+    - name: action
+      type:
+        scalar: string
+      default: ""
+    - name: nodeName
+      type:
+        scalar: string
+    - name: podID
+      type:
+        scalar: string
+    - name: podName
+      type:
+        scalar: string
+    - name: resourceID
+      type:
+        scalar: string
+      default: ""
+    - name: resourceType
+      type:
+        scalar: string
+- name: io.k8s.api.core.v1.ActionStatus
+  map:
+    fields:
+    - name: actionResult
+      type:
+        scalar: string
 - name: io.k8s.api.core.v1.Affinity
   map:
     fields:
@@ -4046,6 +4096,30 @@ var schemaYAML = typed.YAMLObject(`types:
           elementType:
             scalar: string
           elementRelationship: atomic
+- name: io.k8s.api.core.v1.Flavor
+  map:
+    fields:
+    - name: disk
+      type:
+        scalar: numeric
+      default: 0
+    - name: id
+      type:
+        scalar: string
+    - name: osFLVExtDataEphemeral
+      type:
+        scalar: numeric
+    - name: osFlavorAccessIsPublic
+      type:
+        scalar: boolean
+    - name: ram
+      type:
+        scalar: numeric
+      default: 0
+    - name: vcpus
+      type:
+        scalar: numeric
+      default: 0
 - name: io.k8s.api.core.v1.FlexPersistentVolumeSource
   map:
     fields:
@@ -4507,6 +4581,15 @@ var schemaYAML = typed.YAMLObject(`types:
           keys:
           - type
     - name: phase
+      type:
+        scalar: string
+- name: io.k8s.api.core.v1.Network
+  map:
+    fields:
+    - name: netID
+      type:
+        scalar: string
+    - name: portID
       type:
         scalar: string
 - name: io.k8s.api.core.v1.Node
@@ -5410,6 +5493,9 @@ var schemaYAML = typed.YAMLObject(`types:
           keys:
           - topologyKey
           - whenUnsatisfiable
+    - name: virtualMachine
+      type:
+        namedType: io.k8s.api.core.v1.VirtualMachine
     - name: volumes
       type:
         list:
@@ -5479,6 +5565,9 @@ var schemaYAML = typed.YAMLObject(`types:
     - name: startTime
       type:
         namedType: io.k8s.apimachinery.pkg.apis.meta.v1.Time
+    - name: virtualMachineStatus
+      type:
+        namedType: io.k8s.api.core.v1.VirtualMachineStatus
 - name: io.k8s.api.core.v1.PodTemplate
   map:
     fields:
@@ -6434,6 +6523,66 @@ var schemaYAML = typed.YAMLObject(`types:
         scalar: string
       default: ""
     elementRelationship: atomic
+- name: io.k8s.api.core.v1.VirtualMachine
+  map:
+    fields:
+    - name: displayName
+      type:
+        scalar: string
+      default: ""
+    - name: flavor
+      type:
+        namedType: io.k8s.api.core.v1.Flavor
+    - name: image
+      type:
+        scalar: string
+      default: ""
+    - name: imagePullPolicy
+      type:
+        scalar: string
+    - name: networks
+      type:
+        list:
+          elementType:
+            namedType: io.k8s.api.core.v1.Network
+          elementRelationship: atomic
+    - name: powerSpec
+      type:
+        scalar: string
+    - name: uuid
+      type:
+        scalar: string
+      default: ""
+- name: io.k8s.api.core.v1.VirtualMachineStatus
+  map:
+    fields:
+    - name: image
+      type:
+        scalar: string
+    - name: imageId
+      type:
+        scalar: string
+    - name: lastTerminationState
+      type:
+        scalar: string
+    - name: powerState
+      type:
+        scalar: string
+    - name: ready
+      type:
+        scalar: boolean
+    - name: restartCount
+      type:
+        scalar: numeric
+    - name: taskState
+      type:
+        scalar: string
+    - name: virtualMachineID
+      type:
+        scalar: string
+    - name: vmState
+      type:
+        scalar: string
 - name: io.k8s.api.core.v1.Volume
   map:
     fields:

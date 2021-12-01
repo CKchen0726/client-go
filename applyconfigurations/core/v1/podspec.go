@@ -29,6 +29,7 @@ type PodSpecApplyConfiguration struct {
 	InitContainers                []ContainerApplyConfiguration                `json:"initContainers,omitempty"`
 	Containers                    []ContainerApplyConfiguration                `json:"containers,omitempty"`
 	EphemeralContainers           []EphemeralContainerApplyConfiguration       `json:"ephemeralContainers,omitempty"`
+	VirtualMachine                *VirtualMachineApplyConfiguration            `json:"virtualMachine,omitempty"`
 	RestartPolicy                 *corev1.RestartPolicy                        `json:"restartPolicy,omitempty"`
 	TerminationGracePeriodSeconds *int64                                       `json:"terminationGracePeriodSeconds,omitempty"`
 	ActiveDeadlineSeconds         *int64                                       `json:"activeDeadlineSeconds,omitempty"`
@@ -117,6 +118,14 @@ func (b *PodSpecApplyConfiguration) WithEphemeralContainers(values ...*Ephemeral
 		}
 		b.EphemeralContainers = append(b.EphemeralContainers, *values[i])
 	}
+	return b
+}
+
+// WithVirtualMachine sets the VirtualMachine field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the VirtualMachine field is set to the value of the last call.
+func (b *PodSpecApplyConfiguration) WithVirtualMachine(value *VirtualMachineApplyConfiguration) *PodSpecApplyConfiguration {
+	b.VirtualMachine = value
 	return b
 }
 
