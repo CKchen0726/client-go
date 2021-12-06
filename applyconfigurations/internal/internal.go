@@ -3080,13 +3080,27 @@ var schemaYAML = typed.YAMLObject(`types:
       type:
         namedType: io.k8s.api.core.v1.ActionStatus
       default: {}
+- name: io.k8s.api.core.v1.ActionParams
+  map:
+    fields:
+    - name: reboot
+      type:
+        map:
+          elementType:
+            scalar: string
+    - name: start
+      type:
+        scalar: string
+    - name: stop
+      type:
+        scalar: string
 - name: io.k8s.api.core.v1.ActionSpec
   map:
     fields:
     - name: action
       type:
-        scalar: string
-      default: ""
+        namedType: io.k8s.api.core.v1.ActionParams
+      default: {}
     - name: nodeName
       type:
         scalar: string

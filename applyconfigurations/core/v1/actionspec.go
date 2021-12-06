@@ -21,12 +21,12 @@ package v1
 // ActionSpecApplyConfiguration represents an declarative configuration of the ActionSpec type for use
 // with apply.
 type ActionSpecApplyConfiguration struct {
-	ResourceID   *string `json:"resourceID,omitempty"`
-	ResourceType *string `json:"resourceType,omitempty"`
-	Action       *string `json:"action,omitempty"`
-	NodeName     *string `json:"nodeName,omitempty"`
-	PodName      *string `json:"podName,omitempty"`
-	PodID        *string `json:"podID,omitempty"`
+	ResourceID   *string                         `json:"resourceID,omitempty"`
+	ResourceType *string                         `json:"resourceType,omitempty"`
+	Action       *ActionParamsApplyConfiguration `json:"action,omitempty"`
+	NodeName     *string                         `json:"nodeName,omitempty"`
+	PodName      *string                         `json:"podName,omitempty"`
+	PodID        *string                         `json:"podID,omitempty"`
 }
 
 // ActionSpecApplyConfiguration constructs an declarative configuration of the ActionSpec type for use with
@@ -54,8 +54,8 @@ func (b *ActionSpecApplyConfiguration) WithResourceType(value string) *ActionSpe
 // WithAction sets the Action field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Action field is set to the value of the last call.
-func (b *ActionSpecApplyConfiguration) WithAction(value string) *ActionSpecApplyConfiguration {
-	b.Action = &value
+func (b *ActionSpecApplyConfiguration) WithAction(value *ActionParamsApplyConfiguration) *ActionSpecApplyConfiguration {
+	b.Action = value
 	return b
 }
 

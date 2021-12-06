@@ -31,7 +31,7 @@ type VirtualMachineApplyConfiguration struct {
 	Networks        []NetworkApplyConfiguration `json:"networks,omitempty"`
 	Flavor          *FlavorApplyConfiguration   `json:"flavor,omitempty"`
 	UUID            *string                     `json:"uuid,omitempty"`
-	PowerSpec       *string                     `json:"powerSpec,omitempty"`
+	PowerSpec       *v1.VmPowerState            `json:"powerSpec,omitempty"`
 }
 
 // VirtualMachineApplyConfiguration constructs an declarative configuration of the VirtualMachine type for use with
@@ -96,7 +96,7 @@ func (b *VirtualMachineApplyConfiguration) WithUUID(value string) *VirtualMachin
 // WithPowerSpec sets the PowerSpec field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the PowerSpec field is set to the value of the last call.
-func (b *VirtualMachineApplyConfiguration) WithPowerSpec(value string) *VirtualMachineApplyConfiguration {
+func (b *VirtualMachineApplyConfiguration) WithPowerSpec(value v1.VmPowerState) *VirtualMachineApplyConfiguration {
 	b.PowerSpec = &value
 	return b
 }

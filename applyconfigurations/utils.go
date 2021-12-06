@@ -437,6 +437,8 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		// Group=core, Version=v1
 	case corev1.SchemeGroupVersion.WithKind("Action"):
 		return &applyconfigurationscorev1.ActionApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("ActionParams"):
+		return &applyconfigurationscorev1.ActionParamsApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("ActionSpec"):
 		return &applyconfigurationscorev1.ActionSpecApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("ActionStatus"):
