@@ -21,9 +21,9 @@ package v1
 // ActionParamsApplyConfiguration represents an declarative configuration of the ActionParams type for use
 // with apply.
 type ActionParamsApplyConfiguration struct {
-	RebootParams map[string]string `json:"reboot,omitempty"`
-	StartParams  *string           `json:"start,omitempty"`
-	StopParams   *string           `json:"stop,omitempty"`
+	RebootParams *string `json:"reboot,omitempty"`
+	StartParams  *string `json:"start,omitempty"`
+	StopParams   *string `json:"stop,omitempty"`
 }
 
 // ActionParamsApplyConfiguration constructs an declarative configuration of the ActionParams type for use with
@@ -32,17 +32,11 @@ func ActionParams() *ActionParamsApplyConfiguration {
 	return &ActionParamsApplyConfiguration{}
 }
 
-// WithRebootParams puts the entries into the RebootParams field in the declarative configuration
-// and returns the receiver, so that objects can be build by chaining "With" function invocations.
-// If called multiple times, the entries provided by each call will be put on the RebootParams field,
-// overwriting an existing map entries in RebootParams field with the same key.
-func (b *ActionParamsApplyConfiguration) WithRebootParams(entries map[string]string) *ActionParamsApplyConfiguration {
-	if b.RebootParams == nil && len(entries) > 0 {
-		b.RebootParams = make(map[string]string, len(entries))
-	}
-	for k, v := range entries {
-		b.RebootParams[k] = v
-	}
+// WithRebootParams sets the RebootParams field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the RebootParams field is set to the value of the last call.
+func (b *ActionParamsApplyConfiguration) WithRebootParams(value string) *ActionParamsApplyConfiguration {
+	b.RebootParams = &value
 	return b
 }
 

@@ -40,6 +40,6 @@ require (
 
 replace (
 	// k8s.io/api => k8s.io/api v0.0.0-20211111073002-79120fd8e4d1
-	k8s.io/api => github.com/CKchen0726/api v0.30.06
+	k8s.io/api => github.com/CKchen0726/api v0.30.08
 	k8s.io/apimachinery => k8s.io/apimachinery v0.0.0-20211111072429-e757da007984
 )

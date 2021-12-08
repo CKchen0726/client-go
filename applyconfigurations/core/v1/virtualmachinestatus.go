@@ -20,20 +20,25 @@ package v1
 
 import (
 	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // VirtualMachineStatusApplyConfiguration represents an declarative configuration of the VirtualMachineStatus type for use
 // with apply.
 type VirtualMachineStatusApplyConfiguration struct {
-	VirtualMachineID     *string          `json:"virtualMachineID,omitempty"`
-	ImageID              *string          `json:"imageId,omitempty"`
-	Image                *string          `json:"image,omitempty"`
-	State                *v1.VmState      `json:"vmState,omitempty"`
-	LastTerminationState *v1.VmState      `json:"lastTerminationState,omitempty"`
-	TaskState            *v1.TaskState    `json:"taskState,omitempty"`
-	PowerState           *v1.VmPowerState `json:"powerState,omitempty"`
-	Ready                *bool            `json:"ready,omitempty"`
-	RestartCount         *int32           `json:"restartCount,omitempty"`
+	VirtualMachineID     *string                     `json:"virtualMachineID,omitempty"`
+	ImageID              *string                     `json:"imageId,omitempty"`
+	Image                *string                     `json:"image,omitempty"`
+	State                *v1.VmState                 `json:"vmState,omitempty"`
+	LastTerminationState *v1.VmState                 `json:"lastTerminationState,omitempty"`
+	TaskState            *v1.TaskState               `json:"taskState,omitempty"`
+	PowerState           *v1.VmPowerState            `json:"powerState,omitempty"`
+	Ready                *bool                       `json:"ready,omitempty"`
+	RestartCount         *int32                      `json:"restartCount,omitempty"`
+	HostID               *string                     `json:"hostID,omitempty"`
+	NetworkAddresses     []AddressApplyConfiguration `json:"networkAddresses,omitempty"`
+	CreationTimestamp    *metav1.Time                `json:"creationTimestamp,omitempty"`
+	LastUpdateTime       *metav1.Time                `json:"lastUpdateTime,omitempty"`
 }
 
 // VirtualMachineStatusApplyConfiguration constructs an declarative configuration of the VirtualMachineStatus type for use with
@@ -111,5 +116,42 @@ func (b *VirtualMachineStatusApplyConfiguration) WithReady(value bool) *VirtualM
 // If called multiple times, the RestartCount field is set to the value of the last call.
 func (b *VirtualMachineStatusApplyConfiguration) WithRestartCount(value int32) *VirtualMachineStatusApplyConfiguration {
 	b.RestartCount = &value
+	return b
+}
+
+// WithHostID sets the HostID field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the HostID field is set to the value of the last call.
+func (b *VirtualMachineStatusApplyConfiguration) WithHostID(value string) *VirtualMachineStatusApplyConfiguration {
+	b.HostID = &value
+	return b
+}
+
+// WithNetworkAddresses adds the given value to the NetworkAddresses field in the declarative configuration
+// and returns the receiver, so that objects can be build by chaining "With" function invocations.
+// If called multiple times, values provided by each call will be appended to the NetworkAddresses field.
+func (b *VirtualMachineStatusApplyConfiguration) WithNetworkAddresses(values ...*AddressApplyConfiguration) *VirtualMachineStatusApplyConfiguration {
+	for i := range values {
+		if values[i] == nil {
+			panic("nil value passed to WithNetworkAddresses")
+		}
+		b.NetworkAddresses = append(b.NetworkAddresses, *values[i])
+	}
+	return b
+}
+
+// WithCreationTimestamp sets the CreationTimestamp field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the CreationTimestamp field is set to the value of the last call.
+func (b *VirtualMachineStatusApplyConfiguration) WithCreationTimestamp(value metav1.Time) *VirtualMachineStatusApplyConfiguration {
+	b.CreationTimestamp = &value
+	return b
+}
+
+// WithLastUpdateTime sets the LastUpdateTime field in the declarative configuration to the given value
+// and returns the receiver, so that objects can be built by chaining "With" function invocations.
+// If called multiple times, the LastUpdateTime field is set to the value of the last call.
+func (b *VirtualMachineStatusApplyConfiguration) WithLastUpdateTime(value metav1.Time) *VirtualMachineStatusApplyConfiguration {
+	b.LastUpdateTime = &value
 	return b
 }

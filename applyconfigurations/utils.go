@@ -443,6 +443,10 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 		return &applyconfigurationscorev1.ActionSpecApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("ActionStatus"):
 		return &applyconfigurationscorev1.ActionStatusApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("Address"):
+		return &applyconfigurationscorev1.AddressApplyConfiguration{}
+	case corev1.SchemeGroupVersion.WithKind("AddressInfo"):
+		return &applyconfigurationscorev1.AddressInfoApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("Affinity"):
 		return &applyconfigurationscorev1.AffinityApplyConfiguration{}
 	case corev1.SchemeGroupVersion.WithKind("AttachedVolume"):
