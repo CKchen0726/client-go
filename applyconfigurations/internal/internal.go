@@ -3123,6 +3123,33 @@ var schemaYAML = typed.YAMLObject(`types:
     - name: actionResult
       type:
         scalar: string
+- name: io.k8s.api.core.v1.Address
+  map:
+    fields:
+    - name: addresses
+      type:
+        list:
+          elementType:
+            namedType: io.k8s.api.core.v1.AddressInfo
+          elementRelationship: atomic
+    - name: networkPlane
+      type:
+        scalar: string
+- name: io.k8s.api.core.v1.AddressInfo
+  map:
+    fields:
+    - name: addr
+      type:
+        scalar: string
+    - name: osExtIPSMACMacAddr
+      type:
+        scalar: string
+    - name: osExtIPSType
+      type:
+        scalar: string
+    - name: version
+      type:
+        scalar: string
 - name: io.k8s.api.core.v1.Affinity
   map:
     fields:
@@ -6570,6 +6597,19 @@ var schemaYAML = typed.YAMLObject(`types:
 - name: io.k8s.api.core.v1.VirtualMachineStatus
   map:
     fields:
+    - name: addresses
+      type:
+        list:
+          elementType:
+            namedType: io.k8s.api.core.v1.Address
+          elementRelationship: atomic
+    - name: creationTimestamp
+      type:
+        namedType: io.k8s.apimachinery.pkg.apis.meta.v1.Time
+      default: {}
+    - name: hostID
+      type:
+        scalar: string
     - name: image
       type:
         scalar: string
@@ -6579,6 +6619,10 @@ var schemaYAML = typed.YAMLObject(`types:
     - name: lastTerminationState
       type:
         scalar: string
+    - name: lastUpdateTime
+      type:
+        namedType: io.k8s.apimachinery.pkg.apis.meta.v1.Time
+      default: {}
     - name: powerState
       type:
         scalar: string
